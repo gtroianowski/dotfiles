@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+setup_link() {
+  target_path=$1
+  source_path=$2
+  overwrite=${3:false}
+  echo "path: $path"
+  echo "Overwrite: $overwrite"
+
+  if [ ! -e $source_path ]; then
+    echo "The source file $source_path does not exist. Exiting..."
+    exit 1
+  fi
+
+  if [ -e $target_path ] && [ ! -L $target_path ]; then
+    echo "The target file $target_path is a regular file. Exiting..."
+    exit 1
+  fi
+
+  if [ -L $source_path ]; then
+    if [ $overwrite == "true" ]; then
+      echo "the path exists and overwrite is true"
+    else
+      echo "the path exists but no overwrite"
+    fi
+  else
+    echo "the file doesn't exist"
+  fi  
+
+}
+
+
+dotfiles_path=~/dotfiles
+
+# setting up the zshrc file
+setup_link ~/.zshrc $dotfiles_path/.zshrc true
