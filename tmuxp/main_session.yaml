@@ -1,0 +1,20 @@
+session_name: main-session
+windows:
+  - window_name: scratch-1
+    layout: tiled
+    shell_command_before:
+      - cd ~/
+    panes:
+      - echo hello
+      - echo hello
+      - echo hello
+      - echo hello
+  - window_name: scratch-2
+    layout: tiled
+    shell_command_before:
+      - cd ~/
+    panes:
+      - echo hello
+      - echo hello
+      - echo hello
+      - echo hello

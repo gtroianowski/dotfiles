@@ -1,0 +1,1 @@
+This contains a dump of the iTerm2 config to work properly with tmux

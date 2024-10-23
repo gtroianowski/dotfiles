@@ -1,0 +1,11 @@
+session_name: background
+windows:
+  - window_name: jupyter
+    layout: tiled
+    shell_command_before:
+      - cd ~/
+    panes:
+      - shell_command:
+          - conda activate py3.12-jupyter
+          - jupyter  notebook --notebook-dir ~/Documents/Work/Python/Projects
+
