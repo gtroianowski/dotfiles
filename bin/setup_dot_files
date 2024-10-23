@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
+overwrite_files=${1:false}
+
 setup_link() {
   target_path=$1
   source_path=$2
   overwrite=${3:false}
-  echo "path: $path"
-  echo "Overwrite: $overwrite"
+  # echo "target_path: $target_path"
+  # echo "source_path: $source_path"
+  # echo "Overwrite: $overwrite"
 
   if [ ! -e $source_path ]; then
     echo "The source file $source_path does not exist. Exiting..."
@@ -17,14 +20,19 @@ setup_link() {
     exit 1
   fi
 
-  if [ -L $source_path ]; then
-    if [ $overwrite == "true" ]; then
-      echo "the path exists and overwrite is true"
+  if [ -L $target_path ]; then
+    if [ "$overwrite" == "true" ]; then
+      echo -n "The target path $target_path exists and the file WILL BE overwritten ... "
+      rm $target_path
+      ln -s $source_path $target_path
+      echo "Done"
     else
-      echo "the path exists but no overwrite"
+      echo "The target path $target_path exists and the file WILL NOT BE overwritten. Nothing to do."
     fi
   else
-    echo "the file doesn't exist"
+    echo -n "The target file $target_path doesn't exist. Creating ... "
+    ln -s $source_path $target_path
+    echo "Done"
   fi  
 
 }
@@ -33,4 +41,13 @@ setup_link() {
 dotfiles_path=~/dotfiles
 
 # setting up the zshrc file
-setup_link ~/.zshrc $dotfiles_path/.zshrc true
+setup_link ~/.zshrc $dotfiles_path/zsh/.zshrc $overwrite_files
+
+# setup tmux.conf
+setup_link ~/.tmux.conf $dotfiles_path/tmux/.tmux.conf $overwrite_files
+
+# setup conda files
+setup_link ~/.condarc $dotfiles_path/conda/.condarc $overwrite_files
+
+# setup neovim files
+setup_link ~/.config/nvim/custom/plugins $dotfiles_path/nvim/plugins $overwrite_files
