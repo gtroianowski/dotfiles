@@ -112,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 dotfile_path=~/dotfiles
-path+=( dotfiles/bin )
+path+=( ~/dotfiles/bin )
 
 source <(fzf --zsh)
 
