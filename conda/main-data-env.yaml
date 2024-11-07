@@ -1,6 +1,7 @@
 name: py3.12-data-env
 dependencies: 
   - python=3.12
+  - ipykernel
   - polars
   - python-confluent-kafka
   - kafka-python
