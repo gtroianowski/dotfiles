@@ -42,6 +42,7 @@ dotfiles_path=~/dotfiles
 
 # setting up the zshrc file
 setup_link ~/.zshrc $dotfiles_path/zsh/.zshrc $overwrite_files
+setup_link ~/.oh-my-zsh/custom $dotfiles_path/zsh/custom $overwrite_files
 
 # setup tmux.conf
 setup_link ~/.tmux.conf $dotfiles_path/tmux/.tmux.conf $overwrite_files

@@ -1,0 +1,8 @@
+name: py3.12-jupyter
+dependencies: 
+  - python=3.12
+  - jupyterlab
+  - notebook
+  - ipykernel
+
+
