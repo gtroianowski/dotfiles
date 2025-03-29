@@ -120,5 +120,4 @@ source <(fzf --zsh)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export DISABLE_AUTO_TITLE='true'
-export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
